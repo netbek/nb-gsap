@@ -19,15 +19,7 @@
 	// TweenPlugin
 	angular
 		.module('nb.gsap', [])
-		.factory('GSAP', ['$window', function GSAP ($window) {
-				var GSAP = $window.GreenSockGlobals;
-				delete $window.GreenSockGlobals;
-				return GSAP;
-			}])
-		.run(runBlock);
-
-	// Invoke at runtime to allow factory to delete global reference.
-	runBlock.$inject = ['GSAP'];
-	function runBlock (GSAP) {
-	}
+		.factory('GSAP', ['$window', function ($window) {
+				return $window.GreenSockGlobals;
+			}]);
 })(window, window.angular);
